@@ -37,11 +37,11 @@ async function applyColors(colors) {
 		"#github-stats img"
 	).src = `https://github-readme-stats.vercel.app/api?username=arcanistzed&show_icons=true&title_color=${altHex}&text_color=fff&icon_color=${altHex}&bg_color=00000000&hide_border=true`;
 
-	// // Discord presence
-	// const id = "455117777745870860";
-	// const discordPresence = document.querySelector("#discord-presence");
-	// discordPresence.href = `https://discord.com/users/${id}`;
-	// discordPresence.querySelector("img").src = `https://lanyard.cnrad.dev/api/${id}?bg=00000000`;
+	// Discord presence
+	const id = "455117777745870860";
+	const discordPresence = document.querySelector("#discord-presence");
+	discordPresence.href = `https://discord.com/users/${id}`;
+	discordPresence.querySelector("img").src = `https://lanyard.cnrad.dev/api/${id}?bg=00000000`;
 
 	// Tiles
 	const tiles = document.querySelector(".tiles");
@@ -54,8 +54,8 @@ async function applyColors(colors) {
 		tiles.style.opacity = "";
 	}, 500);
 
-	// if (!(await (await fetch(`https://api.lanyard.rest/v1/users/${id}`)).json()).data.activities.length)
-	// 	discordPresence.remove();
+	if (!(await (await fetch(`https://api.lanyard.rest/v1/users/${id}`)).json()).data.activities.length)
+		discordPresence.remove();
 }
 
 /**

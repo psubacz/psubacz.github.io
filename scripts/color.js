@@ -48,10 +48,6 @@ async function applyColors(colors) {
 		tiles.style.opacity = "";
 	}, 500);
 
-	if (!(await (await fetch(`https://api.lanyard.rest/v1/users/${id}`)).json()).data.activities.length)
-		discordPresence.remove();
-}
-
 /**
  * Convert a HSL color to Hex
  * @from https://stackoverflow.com/a/44134328

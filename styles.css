@@ -105,7 +105,7 @@ input {
 	color: var(--text-color);
 }
 
-h1 {
+/* h1 {
 	font-size: 8vw;
 	margin: 0;
 	font-weight: 100;
@@ -113,7 +113,7 @@ h1 {
 h1::after {
 	content: "✨";
 }
-h1,
+h1, */
 h2 {
 	text-align: center;
 }

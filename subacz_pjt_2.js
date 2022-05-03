@@ -102,29 +102,23 @@ function main() {
 		process_keypress(event.key)
 	}
 
-
-	var fileReader = new FileReader("data/cube.py");
-	fileReader.onload = function (e) {
-		// reset model to base frame.
-		process_keypress('Q');
-		process_keypress('W');
-		animation = false;	//turn off animation while getting a new file
-		extents = [];		//clear extents
-		polygons = [];		//clear polygons
-		points = [];		//clear points
-		colors = [];		//clear colors
-		var vertexCoordsList = []; // list of vertex cordinates 
-		var polygonIndexList = []; // list of polygon indexs within the vertexCoordsList.
-		//parse the file
-		[vertexCoordsList, polygonIndexList, extents] = parse_ply_file(vertexCoordsList, polygonIndexList, fileReader.result);
-		init();				//init webgl
-		polygons = construct_polygon_points(vertexCoordsList, polygonIndexList); //get polygons
-		animationDelay *= 1/(polygons.length);	//set animation delay by the number of polygons in list
-		animation = true;	//turn animation back on
-		render();			//render the file
-	}
-	fileReader.readAsText(this.files[0]);
-
+	// reset model to base frame.
+	process_keypress('Q');
+	process_keypress('W');
+	animation = false;	//turn off animation while getting a new file
+	extents = [];		//clear extents
+	polygons = [];		//clear polygons
+	points = [];		//clear points
+	colors = [];		//clear colors
+	var vertexCoordsList = []; // list of vertex cordinates 
+	var polygonIndexList = []; // list of polygon indexs within the vertexCoordsList.
+	//parse the file
+	[vertexCoordsList, polygonIndexList, extents] = parse_ply_file(vertexCoordsList, polygonIndexList, "data/cube.py");
+	init();				//init webgl
+	polygons = construct_polygon_points(vertexCoordsList, polygonIndexList); //get polygons
+	animationDelay *= 1/(polygons.length);	//set animation delay by the number of polygons in list
+	animation = true;	//turn animation back on
+	render();			//render the file
 
 	// Add the event listener to parse input file
 	document.getElementById('ply-file').addEventListener('change', function () {

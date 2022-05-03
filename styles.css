@@ -96,10 +96,7 @@ img,
 	max-width: 100%;
 }
 
-#discord-presence img {
-	clip-path: inset(45% 0 0 0);
-	margin-top: -86px;
-}
+
 
 /* text */
 body,

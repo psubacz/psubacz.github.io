@@ -1,0 +1,299 @@
+:root {
+	--text-color: white;
+	--alt-text-color: transparent;
+	--background-color: #111;
+	--gradient: linear-gradient(0deg, indigo, navy);
+	--square-color: transparent;
+
+	scroll-behavior: smooth;
+}
+
+
+
+/* background */
+body {
+	/* full-height background */
+	height: 100%;
+	margin: 0;
+
+	/* background color */
+	background-color: var(--background-color);
+
+	/* No horizontal scrollbar */
+	overflow-x: hidden;
+}
+
+#background {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	filter: blur(6em);
+}
+
+#square {
+	background-color: var(--square-color);
+	position: absolute;
+	width: 25vw;
+	height: 20vh;
+	bottom: 15vh;
+	right: 35vw;
+	z-index: -2;
+}
+
+#gradient {
+	border-radius: 100%;
+	position: absolute;
+	width: 75vw;
+	height: 90vh;
+	bottom: 5vh;
+	right: 15vw;
+	z-index: -3;
+	background-image: var(--gradient);
+}
+
+/* padding/centering */
+main {
+	padding: 10vh 5vw;
+}
+
+nav,
+section {
+	padding: 0.5em 0;
+}
+
+img,
+.tiles a:not(.list a) {
+	margin: auto;
+	max-width: 100%;
+}
+
+
+
+/* text */
+body,
+input {
+	font-family: "Fira Code", "Noto Emoji", monospace;
+	color: var(--text-color);
+}
+
+h1 {
+	font-size: 8vw;
+	margin: 0;
+	font-weight: 100;
+}
+h1::after {
+	content: "✨";
+}
+h1,
+h2 {
+	text-align: center;
+}
+
+a:not(.list a),
+.list h3 {
+	color: var(--alt-text-color);
+}
+
+a:hover {
+	color: var(--text-color);
+}
+
+nav a {
+	font-size: 3rem;
+	color: var(--alt-text-color);
+	margin: auto;
+}
+
+.list a {
+	text-decoration: none;
+	color: inherit;
+}
+
+p,
+li,
+a:not(.list a),
+.list h3 {
+	text-shadow: 0 0 4px var(--square-color);
+	margin: 0;
+}
+
+.list h3 {
+	font-size: inherit;
+	margin: 0;
+	font-weight: inherit;
+	text-decoration: underline;
+}
+
+.list li {
+	padding: 0.5em 0.5em;
+	margin: 0.5em 0;
+	border: solid 1px transparent;
+	border-radius: 5px;
+	transform: translateX(100px);
+	opacity: 0;
+}
+
+.list li:hover {
+	border: solid 1px var(--alt-text-color);
+}
+
+ul {
+	list-style: square;
+}
+
+.tags {
+	opacity: 0.5;
+	text-transform: lowercase;
+	font-size: 0.75rem;
+}
+
+/* interactivity */
+#search-box {
+	background: transparent;
+	border: none;
+	border-radius: 5px;
+	color: var(--alt-text-color);
+	font-size: 1rem;
+	padding: 5px;
+	width: 100%;
+	box-sizing: border-box;
+	background-color: hsla(0, 0%, 100%, 0.05);
+}
+
+::-webkit-search-cancel-button {
+	display: none;
+}
+
+#project-list,
+#gotoTop {
+	cursor: pointer;
+}
+
+#gotoTop {
+	display: none;
+	position: fixed;
+	right: 0.5em;
+	bottom: 0.5em;
+	z-index: 99;
+	background-color: transparent;
+	color: var(--text-color);
+	border: none;
+	font-size: 2rem;
+}
+
+#gotoTop:hover {
+	color: var(--alt-text-color);
+}
+
+.tiles {
+	display: none;
+}
+
+/* header */
+header {
+	flex-direction: column;
+	margin: 1em;
+}
+
+header,
+nav,
+.tiles {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
+header img {
+	filter: invert(1);
+	height: 10em;
+	animation: bounce 2s cubic-bezier(0.28, 0.84, 0.42, 1) 5s infinite;
+}
+
+/* footer */
+footer {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	opacity: 0.5;
+	text-align: center;
+}
+
+/* scroll bar */
+::-webkit-scrollbar {
+	width: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 1em;
+	background: var(--alt-text-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--text-color);
+}
+
+/* selected text */
+::selection {
+	background: var(--text-color);
+	color: var(--square-color);
+	text-shadow: none;
+}
+
+/* other media */
+@media screen and (min-width: 800px) {
+	main {
+		padding-left: 20vw;
+		padding-right: 20vw;
+	}
+}
+
+@media screen and (min-width: 2000px) {
+	main {
+		padding-left: 33vw;
+		padding-right: 40vw;
+	}
+}
+
+@media speech, print {
+	#background,
+	input,
+	#gotoTop,
+	h1::after {
+		display: none;
+	}
+}
+
+@media print {
+	:root {
+		--text-color: black !important;
+		--alt-text-color: black !important;
+		--background-color: white !important;
+		--gradient: transparent !important;
+		--square-color: white !important;
+	}
+
+	body {
+		background: white;
+		color: black;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	p,
+	li,
+	a {
+		text-shadow: none;
+	}
+
+	a {
+		color: blue;
+	}
+
+	header img {
+		filter: invert(0);
+	}
+
+	.tiles a {
+		display: none;
+	}
+}

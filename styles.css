@@ -8,37 +8,28 @@
 	scroll-behavior: smooth;
 }
 
-@keyframes bounce {
-	0% {
-		transform: scale(1, 1) translateY(0);
-	}
-
-	10% {
-		transform: scale(1.1, 0.9) translateY(0);
-	}
-
-	30% {
-		transform: scale(0.9, 1.1) translateY(-50px);
-	}
-
-	50% {
-		transform: scale(1.05, 0.95) translateY(0);
-	}
-
-	57% {
-		transform: scale(1, 1) translateY(-3px);
-	}
-
-	64% {
-		transform: scale(1, 1) translateY(0);
-	}
-
-	100% {
-		transform: scale(1, 1) translateY(0);
-	}
+.background_canvas {
+  border:1px solid #000000;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  background-color: transparent;
+  text-align: left;
+  padding: 8px;
+  z-index: -1;
 }
 
-/* background */
+.foreground {
+  border:1px solid #000000;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  background-color: #d0f0f6;
+  text-align: left;
+  padding: 8px;
+  z-index: 1;
+}
+
 body {
 	/* full-height background */
 	height: 100%;
@@ -80,7 +71,6 @@ body {
 	background-image: var(--gradient);
 }
 
-/* padding/centering */
 main {
 	padding: 10vh 5vw;
 }
@@ -97,134 +87,31 @@ img,
 }
 
 
-
-/* text */
 body,
 input {
 	font-family: "Fira Code", "Noto Emoji", monospace;
 	color: var(--text-color);
 }
 
-/* h1 {
+h1 {
 	font-size: 8vw;
 	margin: 0;
 	font-weight: 100;
+  /* color: green; */
 }
-h1::after {
+/* h1::after {
 	content: "✨";
-}
-h1, */
+} */
+h1,
 h2 {
 	text-align: center;
 }
 
-a:not(.list a),
-.list h3 {
-	color: var(--alt-text-color);
-}
-
-a:hover {
-	color: var(--text-color);
-}
-
-nav a {
-	font-size: 3rem;
-	color: var(--alt-text-color);
-	margin: auto;
-}
-
-.list a {
-	text-decoration: none;
-	color: inherit;
-}
-
-p,
-li,
-a:not(.list a),
-.list h3 {
-	text-shadow: 0 0 4px var(--square-color);
-	margin: 0;
-}
-
-.list h3 {
-	font-size: inherit;
-	margin: 0;
-	font-weight: inherit;
-	text-decoration: underline;
-}
-
-.list li {
-	padding: 0.5em 0.5em;
-	margin: 0.5em 0;
-	border: solid 1px transparent;
-	border-radius: 5px;
-	transform: translateX(100px);
-	opacity: 0;
-}
-
-.list li:hover {
-	border: solid 1px var(--alt-text-color);
-}
-
-ul {
-	list-style: square;
-}
-
-.tags {
-	opacity: 0.5;
-	text-transform: lowercase;
-	font-size: 0.75rem;
-}
-
-/* interactivity */
-#search-box {
-	background: transparent;
-	border: none;
-	border-radius: 5px;
-	color: var(--alt-text-color);
-	font-size: 1rem;
-	padding: 5px;
-	width: 100%;
-	box-sizing: border-box;
-	background-color: hsla(0, 0%, 100%, 0.05);
-}
-
-::-webkit-search-cancel-button {
-	display: none;
-}
-
-#project-list,
-#gotoTop {
-	cursor: pointer;
-}
-
-#gotoTop {
-	display: none;
-	position: fixed;
-	right: 0.5em;
-	bottom: 0.5em;
-	z-index: 99;
-	background-color: transparent;
-	color: var(--text-color);
-	border: none;
-	font-size: 2rem;
-}
-
-#gotoTop:hover {
-	color: var(--alt-text-color);
-}
-
-.tiles {
-	display: none;
-}
-
-/* header */
 header {
 	flex-direction: column;
 	margin: 1em;
 }
 
-header,
 nav,
 .tiles {
 	display: flex;
@@ -233,95 +120,37 @@ nav,
 }
 
 header img {
-	filter: invert(1);
+	/* filter: invert(1); */
 	height: 10em;
 	animation: bounce 2s cubic-bezier(0.28, 0.84, 0.42, 1) 5s infinite;
 }
 
-/* footer */
-footer {
-	display: flex;
-	flex-direction: column;
-	gap: 1em;
-	opacity: 0.5;
-	text-align: center;
-}
-
-/* scroll bar */
-::-webkit-scrollbar {
-	width: 0.5em;
-}
-
-::-webkit-scrollbar-thumb {
-	border-radius: 1em;
-	background: var(--alt-text-color);
-}
-
-::-webkit-scrollbar-thumb:hover {
-	background: var(--text-color);
-}
-
-/* selected text */
-::selection {
-	background: var(--text-color);
-	color: var(--square-color);
-	text-shadow: none;
-}
-
-/* other media */
-@media screen and (min-width: 800px) {
-	main {
-		padding-left: 20vw;
-		padding-right: 20vw;
-	}
-}
-
-@media screen and (min-width: 2000px) {
-	main {
-		padding-left: 33vw;
-		padding-right: 40vw;
-	}
-}
-
-@media speech, print {
-	#background,
-	input,
-	#gotoTop,
-	h1::after {
-		display: none;
-	}
-}
-
-@media print {
-	:root {
-		--text-color: black !important;
-		--alt-text-color: black !important;
-		--background-color: white !important;
-		--gradient: transparent !important;
-		--square-color: white !important;
+@keyframes bounce {
+	0% {
+		transform: scale(1, 1) translateY(0);
 	}
 
-	body {
-		background: white;
-		color: black;
-		font-family: Arial, Helvetica, sans-serif;
+	10% {
+		transform: scale(1.1, 0.9) translateY(0);
 	}
 
-	p,
-	li,
-	a {
-		text-shadow: none;
+	30% {
+		transform: scale(0.9, 1.1) translateY(-50px);
 	}
 
-	a {
-		color: blue;
+	50% {
+		transform: scale(1.05, 0.95) translateY(0);
 	}
 
-	header img {
-		filter: invert(0);
+	57% {
+		transform: scale(1, 1) translateY(-3px);
 	}
 
-	.tiles a {
-		display: none;
+	64% {
+		transform: scale(1, 1) translateY(0);
+	}
+
+	100% {
+		transform: scale(1, 1) translateY(0);
 	}
 }
